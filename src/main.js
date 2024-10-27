@@ -1,14 +1,18 @@
-import './assets/main.css'
+import { createApp } from 'vue';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import router from './router.js';
+import store from './store/index.js';
+import App from './App.vue';
+import BaseCard from './components/ui/BaseCard.vue';
+import BaseButton from './components/ui/BaseButton.vue';
+import BaseBadge from './components/ui/BaseBadge.vue';
 
-import App from './App.vue'
-import router from './router'
+const app = createApp(App);
 
-const app = createApp(App)
+app.use(router);
+app.use(store);
+app.component('base-card', BaseCard);
+app.component('base-button', BaseButton);
+app.component('base-badge', BaseBadge);
 
-app.use(createPinia())
-app.use(router)
-
-app.mount('#app')
+app.mount('#app');
